@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Slayer</h1>
+<h2>Raining Blood</h2>
+<p>Trapped in Purgotary</p>
+<p>A lifeless object Alive</p>
+<p>Waiting Reprisal</p>
+<p>Death will be their Acquittance</p>
+
+<input type="text" placeholder="Reign in Blood">
+
+<button>Do Not CLick Me</button>
+
+
+<script src="js/jquery-3.6.0.min%20(1).js"></script>
+
+
+<script>
+    //If you press a keyboard key inside an <input> element, it should be hidden. Use the correct event to do so.
+    $('input').keypress(function () {
+        $(this).hide();
+    });
+
+    //Use the on() method to attach a click event handler to all <p> elements.
+    /*$('p').on('click', function () {
+        $(this).hide();
+    });*/
+
+    //Use a jQuery method to hide a <p> element when it is clicked on.
+    /*$("p").click(function () {
+        $(this).hide();
+    });*/
+
+    //Use a jQuery method to hide a <p> element when it is clicked on.
+    $("p").click(function () {
+        $(this).hide('slow');
+    });
+
+    //Use a jQuery method to show a <p> element.
+   /* $("button").click(function () {
+        $("p").show();
+    });*/
+
+    //Use a jQuery method to toggle between hiding and showing a <p> element.
+    $("button").click(function () {
+        $("p").toggle();
+    });
+</script>
+
+
+</body>
+</html>
