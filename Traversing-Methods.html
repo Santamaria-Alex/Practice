@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <main>
+        <h2>The Big 4</h2>
+        <ul id="bands">
+            <li>Metallica</li>
+            <li>Megadeth</li>
+            <li>Slayer</li>
+            <li>Anthrax</li>
+        </ul>
+        <h1>Parks List</h1>
+        <h3 id="national-parks-heading">National Parks</h3>
+        <ul id="national-parks">
+            <li>Arches</li>
+            <li>Badlands</li>
+            <li>Carlsbad Caverns</li>
+            <li>Denali</li>
+            <li>Everglades</li>
+        </ul>
+        <h3>State Parks of Texas</h3>
+        <ul id="state-parks-texas">
+            <li>Abilene</li>
+            <li>Big Bend</li>
+            <li>Choke Canyon</li>
+            <li>Davis Mountains</li>
+            <li>Enchanted Rock</li>
+        </ul>
+    </main>
+    <aside>
+        <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Tour</a></li>
+        </ul>
+    </aside>
+
+    <script src="js/jquery-3.6.0.min%20(1).js"></script>
+
+    <script>
+        $('main ul li').each(function (index){
+            $(this).css('font-style', 'italic');
+            if (index % 2 !==0){
+                $(this).css('background-color', 'cornsilk');
+            }
+        });
+
+        $('li').first().css('background-color', 'lightpink');
+
+        $('li').last().css('background-color', 'lightblue');
+
+        $('#bands').children().css('font-weight', 'bold');
+
+        // $('li').css('background-color', '#FF0');
+        // $('li').parent().css('background-color', '#0F0');
+
+
+
+    </script>
+
+</body>
+</html>

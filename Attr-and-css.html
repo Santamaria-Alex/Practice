@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .centered {
+            text-align: center;
+        }
+        .highlighted {
+            background-color: #FF0;
+        }
+    </style>
+</head>
+<body>
+<h1 id="codeup">Hello Codeup</h1>
+<h2 id="my-element">Slayer</h2>
+<h2 id="metal">Metallica</h2>
+<button id="fontChanger">Change Font</button>
+
+<h1>Example Page</h1>
+<div class="centered important highlighted">
+    <h3>NOTICE</h3>
+    <p>This is an important message!</p>
+</div>
+<div class="not-important">
+    <h2>Lorem Ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, incididunt ut <span class="important highlighted">labore et dolore magna aliqua.</span>, quis ut aliquip ex ea commodo.</p>
+</div>
+<p class="centered important highlighted">This is also very important.</p>
+<a href="#" id="highlight-important">Click to toggle the highlighting of important text.</a>
+
+
+
+
+
+<script src="js/jquery-3.6.0.min%20(1).js"></script>
+
+<script>
+    $('#codeup').click(function() {
+        $(this).html('Codeup Rocks!');
+    });
+
+    //using an object to set css properties
+    $('#my-element').css({
+        'color': 'firebrick',
+        'background-color': 'papayawhip'
+    });
+
+    //define an object ahead of time and call it later in css
+    var highlightedStyles = {
+        'color': 'red',
+        'background-color': 'yellow',
+        'font-size': '28px'
+    };
+    $('#metal').css(highlightedStyles);
+
+    //adds functionality to button that changes font when clicked
+    $('#fontChanger').click(function (){
+        var currentFontFamily = $('body').css('font-family');
+        if (currentFontFamily === 'serif' || currentFontFamily === 'Times') {
+            $('body').css('font-family', 'sans-serif');
+        } else {
+            $('body').css('font-family', 'serif');
+        }
+    });
+
+    //adds class method
+    //adds a class to the href that'll highlight when it's clicked.
+    // $(document).ready(function() {
+    //     $('#highlight-important').click(function(event) {
+    //         event.preventDefault();
+    //         $('.important').addClass('highlighted');
+    //     });
+    // });
+
+    // toggle event
+    // adds functionality to href that'll toggle between highlighted and un-highlighted
+    $(document).ready(function() {
+        $('#highlight-important').click(function(event) {
+            event.preventDefault();
+            $('.important').toggleClass('highlighted');
+        });
+    });
+
+
+
+</script>
+
+</body>
+</html>
