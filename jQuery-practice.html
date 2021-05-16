@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="js/JS-practice.js">
 </head>
 <body>
-<h1>Slayer</h1>
+<h1 id="text-color">Slayer</h1>
 <h2>Raining Blood</h2>
 <p>Trapped in Purgotary</p>
 <p>A lifeless object Alive</p>
@@ -92,11 +92,11 @@
 
 
     //Change text color when button is clicked.
-    // function changeTextColor(){
-    //     $('body').css('color', $('#text-color').val())
-    // }
-    //
-    // $('#color-btn').click(changeTextColor());
+    function changeTextColor(){
+        $('body').css('color', $('#text-color').val())
+    }
+
+    $('#color-btn').click(changeTextColor());
 
     //KEYBOARD EVENTS
 
