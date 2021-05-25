@@ -1,46 +1,48 @@
 const quizData = [
     {
-        question: "How old is Alex?",
-        a: "10",
-        b: "17",
-        c: "26",
-        d: "110",
-        correct: "c",
-    },
-    {
-        question: "What is the most used programming language in 2019?",
-        a: "Java",
-        b: "C",
-        c: "Python",
-        d: "JavaScript",
+        question: "When did ya'll meet?",
+        a: "June 24, 2017",
+        b: "June 24, 2016",
+        c: "February 13, 2017",
+        d: "February 15, 2017",
         correct: "d",
     },
     {
-        question: "Who is the U.S. President?",
-        a: "James Hetfield",
-        b: "Dave Mustaine",
-        c: "Joe Biden",
-        d: "Donald Trump",
-        correct: "b",
-    },
-    {
-        question: "What does HTML stand for?",
-        a: "Hypertext Markup Language",
-        b: "Cascading Style Sheet",
-        c: "Jason Object Notation",
-        d: "Helicopters Terminals Motorboats Lambos",
+        question: "When did ya'll become a couple?",
+        a: "June 24, 2017",
+        b: "June 24, 2016",
+        c: "February 13, 2017",
+        d: "February 15, 2017",
         correct: "a",
     },
     {
-        question: "What year was JavaScript launched?",
-        a: "96",
-        b: "95",
-        c: "94",
-        d: "None of the above",
+        question: "Who is Alex's favorite band of all time?",
+        a: "Metallica",
+        b: "Slayer",
+        c: "Pantera",
+        d: "Tool",
+        correct: "c",
+    },
+    {
+        question: "What football club does Alex support?",
+        a: "Liverpool",
+        b: "Spurs",
+        c: "Texans",
+        d: "Barcelona",
+        correct: "a",
+    },
+    {
+        question: "Do you want to be with me forever, and ever?",
+        a: "Yes",
+        b: "Hell Yes",
+        c: "Claro que si",
+        d: "All of the above",
         correct: "d",
     }
 ];
 
+const answerEls = document.querySelectorAll(".answer");
+const quiz = document.getElementById("quiz");
 const questionEl = document.getElementById("question");
 const a_text = document.getElementById("a_text");
 const b_text = document.getElementById("b_text");
@@ -49,34 +51,64 @@ const d_text = document.getElementById("d_text");
 const submitBtn = document.getElementById("submit");
 
 let currentQuiz = 0;
+let score = 0;
 
 loadQuiz();
 
 
+// replaces the html with data in quizData
 function loadQuiz (){
+    deselectAnswers();
 
     const currentQuizData = quizData[currentQuiz];
-    questionEl.innerHTML = currentQuizData.question;
 
-    a_text.innerHTML = currentQuizData.a;
-    b_text.innerHTML = currentQuizData.b;
-    c_text.innerHTML = currentQuizData.c;
-    d_text.innerHTML = currentQuizData.d;
+    questionEl.innerText = currentQuizData.question;
 
-    currentQuiz++;
+    a_text.innerText = currentQuizData.a;
+    b_text.innerText = currentQuizData.b;
+    c_text.innerText = currentQuizData.c;
+    d_text.innerText = currentQuizData.d;
+}
 
+function getSelected(){
 
+    let answer = undefined;
+    
+    answerEls.forEach((answerEl) => {
+        if (answerEl.checked){
+            answer = answerEl.id;
+        }
+    });
+
+    return answer;
+}
+
+function deselectAnswers(){
+    answerEls.forEach((answerEl) => {
+        answerEl.checked = false;
+    })
 }
 
 
-submitBtn.addEventListener('click', ()=> {
-    currentQuiz++;
+submitBtn.addEventListener('click', () => {
+    // checks to see answer
+    const answer = getSelected();
 
-    if (currentQuiz < quizData.length){
-        loadQuiz();
-    } else {
-        //TODO: Show results
-        alert("You finished.");
+    console.log(answer);
+
+    if (answer) {
+        if (answer === quizData[currentQuiz].correct) {
+            score++;
+        }
+
+        currentQuiz++;
+        if (currentQuiz < quizData.length) {
+            loadQuiz();
+        } else {
+            quiz.innerHTML = `<h3>You answered ${score}/${quizData.length} questions correctly.</h3> <button onclick="location.reload()">Reload</button>`
+        }
     }
-})
+});
+
+
 
