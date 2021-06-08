@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="drumkit.css">
+</head>
+<body>
+
+    <div class="keys">
+        <div data-key="65" class="key">
+            <kbd>A</kbd>
+            <span class="sound">clap</span>
+        </div>
+
+        <div data-key="83" class="key">
+            <kbd>S</kbd>
+            <span class="sound">hihat</span>
+        </div>
+
+        <div data-key="68" class="key">
+            <kbd>D</kbd>
+            <span class="sound">kick</span>
+        </div>
+
+        <div data-key="70" class="key">
+            <kbd>F</kbd>
+            <span class="sound">openhat</span>
+        </div>
+
+        <div data-key="71" class="key">
+            <kbd>G</kbd>
+            <span class="sound">boom</span>
+        </div>
+
+        <div data-key="72" class="key">
+            <kbd>H</kbd>
+            <span class="sound">ride</span>
+        </div>
+
+        <div data-key="74" class="key">
+            <kbd>J</kbd>
+            <span class="sound">snare</span>
+        </div>
+
+        <div data-key="75" class="key">
+            <kbd>K</kbd>
+            <span class="sound">tom</span>
+        </div>
+
+        <div data-key="76" class="key">
+            <kbd>L</kbd>
+            <span class="sound">tink</span>
+        </div>
+        
+    </div>
+
+
+    <audio data-key="65" src="../audio/Single-clap.mp3"></audio>
+    <audio data-key="83" src="../audio/hihat.wav"></audio>
+    <audio data-key="68" src="../audio/kick.wav"></audio>
+    <audio data-key="70" src="../audio/Single-clap.mp3"></audio>
+    <audio data-key="71" src="../audio/Single-clap.mp3"></audio>
+    <audio data-key="72" src="../audio/Single-clap.mp3"></audio>
+    <audio data-key="74" src="../audio/Single-clap.mp3"></audio>
+    <audio data-key="75" src="../audio/Single-clap.mp3"></audio>
+    <audio data-key="76" src="../audio/Single-clap.mp3"></audio>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        window.addEventListener('keydown', function (e){
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+
+            if (!audio) return; // stops function from running all together.
+            audio.currentTime = 0; // rewinds to the start, so the sound plays at every keydown and doesn't lag
+            audio.play(); // plays the sound
+
+            key.classList.add('playing'); // adds the class 'playing' to each 'key' variable
+            // console.log(key);
+        });
+
+        function removeTransition(e){
+            // console.log(e); // shows the propertyName = transform
+            if (e.propertyName !== 'transform') return; //skip if not a transform
+            this.classList.remove('playing');
+        }
+
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+
+
+    </script>
+</body>
+</html>
