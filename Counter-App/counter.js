@@ -12,7 +12,7 @@ buttons.addEventListener('click', (e) => {
         count.innerHTML = 0;
     }
 
-    setColor();
+    // setColor();
 })
 
 function setColor(){
