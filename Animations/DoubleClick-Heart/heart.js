@@ -2,6 +2,7 @@ const loveMe = document.querySelector('.loveMe');
 const times = document.querySelector('#times');
 
 let clickTime = 0;
+let timesClicked = 0;
 
 //created a double click, easier way is to pass a dblclick instad of click
 loveMe.addEventListener('click', (e) =>{
@@ -35,4 +36,9 @@ const createHeart = (e) =>{
     heart.style.left = `${xInside}px`
     
     loveMe.appendChild(heart);
+
+    times.innerHTML = ++timesClicked;
+
+    //removes the heart we dynamically created that activates when pic is double clicked.
+    setTimeout(() => heart.remove(), 1000);
 }
