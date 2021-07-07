@@ -1,5 +1,11 @@
 const addBtn = document.getElementById('add');
 
+const notes = JSON.parse(localStorage.getItem('notes'))
+
+if (notes){
+    notes.forEach(note => addNewNote(note));
+}
+
 addBtn.addEventListener('click', () => addNewNote());
 
 function addNewNote(text = ''){
@@ -26,6 +32,8 @@ function addNewNote(text = ''){
 
     deleteBtn.addEventListener('click', () => {
         note.remove();
+
+        updateLocalStorage();
     })
 
     editBtn.addEventListener('click', () => {
@@ -37,7 +45,30 @@ function addNewNote(text = ''){
         const {value} = e.target;
 
         main.innerHTML = marked(value);
+
+        updateLocalStorage();
     })
 
     document.body.appendChild(note);
+}
+
+
+
+
+//local storage uses key value pairs
+//can only store strings in local storage,
+//must stringify if using non strings
+// localStorage.setItem('name', 'Brad')
+// localStorage.getItem('name') //this would output "Brad"
+
+function updateLocalStorage(){
+    const notesText = document.querySelectorAll('textarea');
+
+    const notes = [];
+
+    notesText.forEach(note => notes.push(note.value));
+
+    localStorage.setItem('notes', JSON.stringify(notes));
+
+    console.log(notes)
 }
