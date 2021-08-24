@@ -1,0 +1,108 @@
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #fff;
+    color: #fff;
+}
+
+#border{
+    border: 1.5px solid darkgray;
+    width: 90%;
+    height: 95%;
+}
+
+.profile-box{
+    border-top: 1.5px solid darkgray;
+    border-bottom: 1.5px solid darkgray;
+    width: 100%;
+    /*margin: 20px 0;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+
+#margin{
+    margin: 20px;
+}
+
+#profile-pic{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+
+#profile-border{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#user-info{
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*text-align: center;*/
+}
+
+#message{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#buttons{
+    justify-content: end;
+}
+
+button {
+    background-color: transparent;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+button:hover{
+    background-color: hotpink;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

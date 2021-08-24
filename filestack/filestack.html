@@ -3,27 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+  <link rel="stylesheet" href="filestack.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    .stars-outer{
+      position: relative;
+      display: inline-block;
+    }
+
+    .stars-inner{
+      position: absolute;
+      top: 0;
+      left: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+    }
+
+    .stars-outer::before{
+      content: "\f005 \f005 \f005 \f005 \f005";
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      color: #ccc;
+    }
+
+    .stars-inner::before{
+      content: "\f005 \f005 \f005 \f005 \f005";
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      color: #f8ce0b;
+    }
+  </style>
+
 </head>
 <body>
 
-<div class="box">
-  <form id="pick-form">
-    <div class="field">
-      <div class="control">
-        <button class="button" type="button" id="picker">Pick file</button>
-        <input type="hidden" id="fileupload">
-      </div>
-      <div class="control" id="nameBox"></div>
-      <div class="control" id="urlBox"></div>
+<!--  <div id="border">-->
+
+<!--    <div class="profile-box">-->
+<!--      <div id="margin">-->
+<!--        <div id="profile-border">-->
+<!--          <img src="../img/yorkie.jpeg" alt="profile-pic" id="profile-pic">-->
+<!--        </div>-->
+<!--        <div id="user-info">-->
+<!--          <h2>Alex Santamaria </h2>-->
+<!--          <a href=""><i class="fas fa-envelope" id="message"></i></a>-->
+<!--          <i class="fas fa-star"></i>-->
+<!--          <i class="fas fa-star"></i>-->
+<!--          <i class="fas fa-star"></i>-->
+<!--          <i class="fas fa-star"></i>-->
+<!--          <i class="far fa-star">(13)</i>-->
+<!--          <h4>Promoter</h4>-->
+<!--          <div id="bio">-->
+<!--            Bio: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda deleniti eaque esse et exercitationem facilis fugiat illo ipsum iste laboriosam molestias, quia reiciendis reprehenderit sint tempore vero voluptatem voluptatum!-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <div id="buttons">-->
+<!--            <button>Create Event</button>-->
+<!--            <button>Edit Profile</button>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--  </div>-->
+
+<div class="container">
+  <div class="reviews">
+    <div class="stars-outer">
+      <div class="stars-inner"></div>
     </div>
-    <div class="field">
-      <div class="control">
-        <input class="button" type="submit" value="Submit">
-      </div>
-    </div>
-  </form>
+    <span class="number-rating"></span>
+  </div>
 </div>
 
-<script src="filestack.js"></script>
+
+
+
+
+  <script>
+    //initial ratings
+    const ratings ={
+      reviews: 4.3
+    }
+
+    //total stars
+    const starsTotal = 5;
+
+    //run getRatings when DOM loads
+    document.addEventListener("DOMContentLoaded", getRatings);
+
+    //get ratings
+    function getRatings(){
+      for(let rating in ratings){
+        //get percentage
+        const starPercentage = (ratings[rating] / starsTotal) * 100;
+
+        //round to nearest 10
+        const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
+
+
+        console.log(starPercentageRounded)
+
+//set width of stars-inner to percentage
+        document.querySelector(`.${rating} .stars-inner`).style.width = starPercentageRounded;
+
+      }
+    }
+  </script>
+
+
 </body>
 </html>
